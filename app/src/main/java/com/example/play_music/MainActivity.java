@@ -52,6 +52,7 @@ public class MainActivity extends AppCompatActivity {
             }
         }, 0, 1000);
     }
+
     public void playPause (View view){
         if (mediaPlayer.isPlaying()) {
             mediaPlayer.pause();
@@ -62,8 +63,15 @@ public class MainActivity extends AppCompatActivity {
         }
     }
     public void previous(View view) {
+        seekBar.setProgress(0);
+        mediaPlayer.seekTo(0);
+        mediaPlayer.pause();
+        playPauseIcon.setImageResource(R.drawable.ic_play_arrow_black_24dp);
     }
-
     public void next(View view) {
+        seekBar.setProgress(mediaPlayer.getDuration());
+        mediaPlayer.seekTo(mediaPlayer.getDuration());
+        mediaPlayer.pause();
+        playPauseIcon.setImageResource(R.drawable.ic_play_arrow_black_24dp);
     }
 }
