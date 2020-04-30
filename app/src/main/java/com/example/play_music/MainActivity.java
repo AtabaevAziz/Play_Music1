@@ -1,37 +1,37 @@
 package com.example.play_music;
 
-import android.media.AudioManager;
 import android.media.MediaPlayer;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.SeekBar;
+
+import java.util.Timer;
+import java.util.TimerTask;
 
 public class MainActivity extends AppCompatActivity {
 
     MediaPlayer mediaPlayer;
     ImageView playPauseIcon;
-    SeekBar volumeSeekBar;
-    AudioManager audioManager;
-
-
+    SeekBar seekBar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        audioManager = (AudioManager)getSystemService(AUDIO_SERVICE);
-        int maxVolume = audioManager.getStreamMaxVolume(AudioManager.STREAM_MUSIC);
 
-        volumeSeekBar = findViewById(R.id.volumeSeekBar);
-        volumeSeekBar.setMax(maxVolume);
-        volumeSeekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+        playPauseIcon = findViewById(R.id.playPauseIcon);
+        mediaPlayer = MediaPlayer.create(getApplicationContext(), R.raw.wewillrockyou);
+
+        seekBar = findViewById(R.id.seekBar);
+        seekBar.setMax(mediaPlayer.getDuration());
+        seekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
-                Log.d("Progress changed: ", "" + progress);
-                audioManager.setStreamVolume(AudioManager.STREAM_MUSIC, progress, 0);
+                if (fromUser) {
+                    mediaPlayer.seekTo(progress);
+                }
             }
 
             @Override
@@ -45,11 +45,14 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        playPauseIcon = findViewById(R.id.playPauseIcon);
-        mediaPlayer = MediaPlayer.create(getApplicationContext(), R.raw.wewillrockyou);
-
+        new Timer().scheduleAtFixedRate(new TimerTask() {
+            @Override
+            public void run() {
+                seekBar.setProgress(mediaPlayer.getCurrentPosition());
+            }
+        }, 0, 1000);
     }
-    public void playPause(View view) {
+    public void playPause (View view){
         if (mediaPlayer.isPlaying()) {
             mediaPlayer.pause();
             playPauseIcon.setImageResource(R.drawable.ic_play_arrow_black_24dp);
@@ -58,7 +61,6 @@ public class MainActivity extends AppCompatActivity {
             playPauseIcon.setImageResource(R.drawable.ic_pause_black_24dp);
         }
     }
-
     public void previous(View view) {
     }
 

@@ -8,7 +8,7 @@
     tools:context=".MainActivity">
 
     <SeekBar
-        android:id="@+id/volumeSeekBar"
+        android:id="@+id/seekBar"
         android:layout_width="0dp"
         android:layout_height="50dp"
         android:layout_marginBottom="265dp"
@@ -27,6 +27,7 @@
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.962"
         app:srcCompat="@drawable/circle" />
     <ImageView
         android:id="@+id/musicIcon"
@@ -38,6 +39,7 @@
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.962"
         app:srcCompat="@drawable/ic_music_note_black_24dp"
         tools:ignore="VectorDrawableCompat" />
 
@@ -48,7 +50,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/volumeSeekBar"
+        app:layout_constraintTop_toBottomOf="@+id/seekBar"
         app:srcCompat="@drawable/circle" />
     <ImageView
         android:id="@+id/playPauseIcon"
@@ -59,7 +61,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/playCircle"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/volumeSeekBar"
+        app:layout_constraintTop_toBottomOf="@+id/seekBar"
         app:srcCompat="@drawable/ic_play_arrow_black_24dp"
         tools:ignore="OnClick,VectorDrawableCompat" />
 
@@ -74,7 +76,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/playCircle"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/volumeSeekBar"
+        app:layout_constraintTop_toBottomOf="@+id/seekBar"
         app:srcCompat="@drawable/circle" />
     <ImageView
         android:id="@+id/prevIcon"
@@ -88,7 +90,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/playCircle"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/volumeSeekBar"
+        app:layout_constraintTop_toBottomOf="@+id/seekBar"
         app:srcCompat="@drawable/ic_skip_previous_black_24dp"
         tools:ignore="VectorDrawableCompat" />
 
@@ -103,7 +105,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/playCircle"
-        app:layout_constraintTop_toBottomOf="@+id/volumeSeekBar"
+        app:layout_constraintTop_toBottomOf="@+id/seekBar"
         app:srcCompat="@drawable/circle" />
     <ImageView
         android:id="@+id/nextIcon"
@@ -117,7 +119,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/playCircle"
-        app:layout_constraintTop_toBottomOf="@+id/volumeSeekBar"
+        app:layout_constraintTop_toBottomOf="@+id/seekBar"
         app:srcCompat="@drawable/ic_skip_next_black_24dp"
         tools:ignore="VectorDrawableCompat" />
 
@@ -133,7 +135,7 @@
         android:textAlignment="center"
         android:textStyle="bold|italic"
         android:textSize="30dp"
-        app:layout_constraintBottom_toTopOf="@+id/volumeSeekBar"/>
+        app:layout_constraintBottom_toTopOf="@+id/seekBar"/>
 
 
 </android.support.constraint.ConstraintLayout>
